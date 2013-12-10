@@ -1,0 +1,49 @@
+FORMAT: 1A
+HOST: https://my-card.in/
+
+# MyCard API
+MyCard API is a service about yu-gi-oh, YGOPro and MyCard.
+
+# Group Decks
+Decks related resources of the **MyCard API**
+
+## Decks Collection [/decks]
+### List all Decks[GET]
++ Response 200 (application/json)
+
+        [{
+          "id": 1, "title": "Jogging in park"
+        }, {
+          "id": 2, "title": "Pick-up posters from post-office"
+        }]
+
+## Deck [/decks/{user}/{name}]
+A single Deck object with all its details
+
++ Parameters
+    + user (required, string, `zh99998`) ... String `user` of the Deck belongs to.
+    + name (required, string, `HeroBeat`) ... String `name` of the Deck.
+
+### Retrieve a Note [GET]
++ Response 200 (application/json)
+
+    + Header
+
+            X-My-Header: The Value
+
+    + Body
+
+            { "id": 2, "title": "Pick-up posters from post-office" }
+
+### Create or update a Deck [PUT]
++ Request (application/json)
+
+        { "title": "Buy cheese and bread for breakfast." }
+
++ Response 201 (application/json)
+
+        { "id": 3, "title": "Buy cheese and bread for breakfast." }
+
+
+### Remove a Note [DELETE]
++ Response 204
