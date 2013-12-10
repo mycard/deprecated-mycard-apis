@@ -11,18 +11,183 @@ Decks related resources of the **MyCard API**
 ### List all Decks[GET]
 + Response 200 (application/json)
 
-        [{
-          "id": 1, "title": "Jogging in park"
-        }, {
-          "id": 2, "title": "Pick-up posters from post-office"
-        }]
+        [
+            {
+                "_id": "5212d72f6840e91257000004",
+                "user": "zh99998",
+                "name": "sample",
+                "cards": [
+                    {
+                        "card_id": 65367484,
+                        "side": false,
+                        "count": 3
+                    },
+                    {
+                        "card_id": 5361647,
+                        "side": false,
+                        "count": 3
+                    },
+                    {
+                        "card_id": 68144350,
+                        "side": false,
+                        "count": 3
+                    },
+                    {
+                        "card_id": 32750341,
+                        "side": false,
+                        "count": 3
+                    },
+                    {
+                        "card_id": 79867938,
+                        "side": false,
+                        "count": 3
+                    },
+                    {
+                        "card_id": 4549095,
+                        "side": false,
+                        "count": 3
+                    },
+                    {
+                        "card_id": 19613556,
+                        "side": false,
+                        "count": 1
+                    },
+                    {
+                        "card_id": 32807846,
+                        "side": false,
+                        "count": 1
+                    },
+                    {
+                        "card_id": 53129443,
+                        "side": false,
+                        "count": 1
+                    },
+                    {
+                        "card_id": 81439173,
+                        "side": false,
+                        "count": 1
+                    },
+                    {
+                        "card_id": 83764718,
+                        "side": false,
+                        "count": 1
+                    },
+                    {
+                        "card_id": 95281259,
+                        "side": false,
+                        "count": 3
+                    },
+                    {
+                        "card_id": 98645731,
+                        "side": false,
+                        "count": 2
+                    },
+                    {
+                        "card_id": 5318639,
+                        "side": false,
+                        "count": 3
+                    },
+                    {
+                        "card_id": 29401950,
+                        "side": false,
+                        "count": 2
+                    },
+                    {
+                        "card_id": 53582587,
+                        "side": false,
+                        "count": 2
+                    },
+                    {
+                        "card_id": 94192409,
+                        "side": false,
+                        "count": 3
+                    },
+                    {
+                        "card_id": 41420027,
+                        "side": false,
+                        "count": 1
+                    },
+                    {
+                        "card_id": 84749824,
+                        "side": false,
+                        "count": 1
+                    },
+                    {
+                        "card_id": 71594310,
+                        "side": false,
+                        "count": 1
+                    },
+                    {
+                        "card_id": 84013237,
+                        "side": false,
+                        "count": 1
+                    },
+                    {
+                        "card_id": 59627393,
+                        "side": false,
+                        "count": 1
+                    },
+                    {
+                        "card_id": 54719828,
+                        "side": false,
+                        "count": 1
+                    },
+                    {
+                        "card_id": 23232295,
+                        "side": false,
+                        "count": 3
+                    },
+                    {
+                        "card_id": 82944432,
+                        "side": false,
+                        "count": 1
+                    },
+                    {
+                        "card_id": 51735257,
+                        "side": false,
+                        "count": 1
+                    },
+                    {
+                        "card_id": 60645181,
+                        "side": false,
+                        "count": 1
+                    },
+                    {
+                        "card_id": 63746411,
+                        "side": false,
+                        "count": 1
+                    },
+                    {
+                        "card_id": 95169481,
+                        "side": false,
+                        "count": 1
+                    },
+                    {
+                        "card_id": 25341652,
+                        "side": false,
+                        "count": 1
+                    },
+                    {
+                        "card_id": 34086406,
+                        "side": false,
+                        "count": 1
+                    },
+                    {
+                        "card_id": 12014404,
+                        "side": false,
+                        "count": 1
+                    }
+                ],
+                "updated_at": "2013-08-20T21:41:08-07:00"
+            }
+        ]
 
 ## Deck [/decks/{user}/{name}]
 A single Deck object with all its details
 
 + Parameters
     + user (required, string, `zh99998`) ... String `user` of the Deck belongs to.
-    + name (required, string, `HeroBeat`) ... String `name` of the Deck.
+    + name (required, string, `sample`) ... String `name` of the Deck.
 
 ### Retrieve a Note [GET]
 + Response 200 (application/json)
