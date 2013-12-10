@@ -16,7 +16,7 @@ All user-related API need a HTTP Basic Auth.
             {
                 "_id": "5212d72f6840e91257000004",
                 "user": "zh99998",
-                "name": "sample",
+                "name": "Exodia",
                 "cards": [
                     {
                         "card_id": 7902349,
@@ -53,7 +53,7 @@ A single Deck object with all its details
 
 + Parameters
     + user (required, string, `zh99998`) ... String `user` of the Deck belongs to.
-    + name (required, string, `sample`) ... String `name` of the Deck.
+    + name (required, string, `Exodia`) ... String `name` of the Deck.
 
 ### Retrieve a Deck [GET]
 + Response 200 (application/json)
@@ -163,6 +163,7 @@ A single Deck object with all its details
             "updated_at": "2013-08-20T21:41:08-07:00"
         }
 
++ Response 409
 
 ### Remove a Deck [DELETE]
 + Response 204
