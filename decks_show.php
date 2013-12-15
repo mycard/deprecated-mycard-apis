@@ -1,5 +1,5 @@
 <?php
-if (!isset($_REQUEST['user'])) {
+if (!isset($_REQUEST['name']) || !isset($_REQUEST['user'])) {
     header("HTTP/1.1 400 Bad Request");
     exit();
 }
@@ -10,6 +10,7 @@ $mongo = new MongoClient(MONGO); // 连接
 $db = $mongo->selectDB(DB);
 
 $user_name = $_REQUEST['user']; #暂时向下兼容
+$name = $_REQUEST['name'];
 
 if(!isset($_REQUEST['legacy_decksync_compatible'])){
     if (!isset($_SERVER['PHP_AUTH_USER']) || $_SERVER['PHP_AUTH_USER'] != $user_name) {
@@ -25,20 +26,15 @@ if (!$user) {
     exit;
 }
 
-#main
-$cursor = $db->decks_new->find(array('user' => $user['_id'], 'deleted' => array('$ne' => true)));
+$deck = $db->decks_new->findOne(array(
+    'user' => $user['_id'],
+    'name' => $name,
+));
 
-$decks = iterator_to_array($cursor, false);
-document_output($decks);
-
-document_output($user);
-
-foreach($decks as &$deck){
+if($deck){
+    document_output($decks);
+    document_output($user);
     $deck['user'] = $user;
-    if(isset($_REQUEST['legacy_decksync_compatible'])){
-        $deck['cards'] = $deck['card_usages'];
-        unset($deck['card_usages']);
-    }
+}else{
+    header('HTTP/1.1 404 Not Found');
 }
-
-echo(json_encode($decks));
