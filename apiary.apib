@@ -19,37 +19,44 @@ All User-related API need a *HTTP Basic* Auth.
 
         [
             {
-                "_id": "5212d72f6840e91257000004",
-                "user": "zh99998",
-                "name": "Exodia",
-                "card_usages": [
+                id: "52ad12d5a913b1e378da31cb"
+                name: "Exodia",
+                user: {
+                    id: "52663da78c51ebaf06000001"
+                   name: "zh99998",
+                   points: 102,
+                },
+                created_at: "2013-12-15T02:24:21+00:00",
+                updated_at: "2013-12-15T02:24:21+00:00",
+                deleted: false,
+                card_usages: [
                     {
-                        "card_id": 7902349,
-                        "side": false,
-                        "count": 1
+                        card_id: 33396948,
+                        side: false,
+                        count: 1
                     },
                     {
-                        "card_id": 8124921,
-                        "side": false,
-                        "count": 1
+                        card_id: 7902349,
+                        side: false,
+                        count: 1
                     },
                     {
-                        "card_id": 33396948,
-                        "side": false,
-                        "count": 1
+                        card_id: 8124921,
+                        side: false,
+                        count: 1
                     },
                     {
-                        "card_id": 44519536,
-                        "side": false,
-                        "count": 1
+                        card_id: 44519536,
+                        side: false,
+                        count: 1
                     },
                     {
-                        "card_id": 70903634,
-                        "side": false,
-                        "count": 1
+                        card_id: 70903634,
+                        side: false,
+                        count: 1
                     }
                 ],
-                "updated_at": "2013-08-20T21:41:08-07:00"
+                version: 1,
             }
         ]
 
@@ -64,37 +71,44 @@ A single Deck object with all its details
 + Response 200 (application/json)
 
         {
-            "_id": "5212d72f6840e91257000004",
-            "user": "zh99998",
-            "name": "Exodia",
-            "cards": [
+            id: "52ad12d5a913b1e378da31cb"
+            name: "Exodia",
+            user: {
+                id: "52663da78c51ebaf06000001"
+               name: "zh99998",
+               points: 102,
+            },
+            created_at: "2013-12-15T02:24:21+00:00",
+            updated_at: "2013-12-15T02:24:21+00:00",
+            deleted: false,
+            card_usages: [
                 {
-                    "card_id": 7902349,
-                    "side": false,
-                    "count": 1
+                    card_id: 33396948,
+                    side: false,
+                    count: 1
                 },
                 {
-                    "card_id": 8124921,
-                    "side": false,
-                    "count": 1
+                    card_id: 7902349,
+                    side: false,
+                    count: 1
                 },
                 {
-                    "card_id": 33396948,
-                    "side": false,
-                    "count": 1
+                    card_id: 8124921,
+                    side: false,
+                    count: 1
                 },
                 {
-                    "card_id": 44519536,
-                    "side": false,
-                    "count": 1
+                    card_id: 44519536,
+                    side: false,
+                    count: 1
                 },
                 {
-                    "card_id": 70903634,
-                    "side": false,
-                    "count": 1
+                    card_id: 70903634,
+                    side: false,
+                    count: 1
                 }
             ],
-            "updated_at": "2013-08-20T21:41:08-07:00"
+            version: 1,
         }
 
 
