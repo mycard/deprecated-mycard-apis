@@ -43,6 +43,14 @@ $deck = $db->decks_new->findOne(array(
 if ($deck) {
     if ($deck['updated_at'] <= $updated_at) {
         if($deck['card_usages'] == $card_usages){
+            $db->decks_new->update(array(
+                '_id' => $deck['_id'],
+            ), array(
+                '$set' => array(
+                    'updated_at' => $updated_at,
+                    'deleted' => false
+                )
+            ));
             header('HTTP/1.1 204 No Content');
         } else {
             $db->deck_versions->insert(array(
