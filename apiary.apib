@@ -4,11 +4,16 @@ HOST: https://my-card.in/
 # MyCard API
 MyCard API is a service about yu-gi-oh, YGOPro and MyCard.
 
+MyCard API is in BETA now, means unstable and changeable. If you are developing with it, please contact zh99998<zh99998@gmail.com>.
+
 # Group Decks
 Decks related resources of the **MyCard API**
-All user-related API need a HTTP Basic Auth.
+All User-related API need a *HTTP Basic* Auth.
 
-## Decks Collection [/decks]
+## Decks Collection [/decks/{user}.json]
++ Parameters
+    + user (required, string, `zh99998`) ... String `user` of the Deck belongs to.
+
 ### Get all Decks of a user[GET]
 + Response 200 (application/json)
 
@@ -17,7 +22,7 @@ All user-related API need a HTTP Basic Auth.
                 "_id": "5212d72f6840e91257000004",
                 "user": "zh99998",
                 "name": "Exodia",
-                "cards": [
+                "card_usages": [
                     {
                         "card_id": 7902349,
                         "side": false,
@@ -48,7 +53,7 @@ All user-related API need a HTTP Basic Auth.
             }
         ]
 
-## Deck [/decks/{user}/{name}]
+## Deck [/decks/{user}/{name}.json]
 A single Deck object with all its details
 
 + Parameters
@@ -92,78 +97,26 @@ A single Deck object with all its details
             "updated_at": "2013-08-20T21:41:08-07:00"
         }
 
+
 ### Create or update a Deck [PUT]
++ Request (application/x-www-form-urlencoded)
+
+        updated_at=2013-08-20T21:41:08-07:00&cards=J_ZjUIeJSNIe_n5Kp1BwMOedS
+
 + Request (application/json)
 
-        {
-            "name": "Exodia",
-            "cards": [
-                {
-                    "card_id": 7902349,
-                    "side": false,
-                    "count": 1
-                },
-                {
-                    "card_id": 8124921,
-                    "side": false,
-                    "count": 1
-                },
-                {
-                    "card_id": 33396948,
-                    "side": false,
-                    "count": 1
-                },
-                {
-                    "card_id": 44519536,
-                    "side": false,
-                    "count": 1
-                },
-                {
-                    "card_id": 70903634,
-                    "side": false,
-                    "count": 1
-                }
-            ],
-            "updated_at": "2013-08-20T21:41:08-07:00"
-        }
+        will support if you need it and contact zh99998<zh99998@gmail.com>
 
-+ Response 201 (application/json)
++ Response 201
+    + Headers
 
-        {
-            "_id": "5212d72f6840e91257000004",
-            "user": "zh99998",
-            "name": "Exodia",
-            "cards": [
-                {
-                    "card_id": 7902349,
-                    "side": false,
-                    "count": 1
-                },
-                {
-                    "card_id": 8124921,
-                    "side": false,
-                    "count": 1
-                },
-                {
-                    "card_id": 33396948,
-                    "side": false,
-                    "count": 1
-                },
-                {
-                    "card_id": 44519536,
-                    "side": false,
-                    "count": 1
-                },
-                {
-                    "card_id": 70903634,
-                    "side": false,
-                    "count": 1
-                }
-            ],
-            "updated_at": "2013-08-20T21:41:08-07:00"
-        }
+            Location: https://my-card.in/decks/zh99998/sample.json
+
++ Response 204
 
 + Response 409
 
 ### Remove a Deck [DELETE]
 + Response 204
+
++ Response 410

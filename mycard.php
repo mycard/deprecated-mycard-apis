@@ -19,6 +19,6 @@ class MyCard
                 'count' => $count
             );
         }
-        return result;
+        return $result;
     }
 }
