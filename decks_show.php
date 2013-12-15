@@ -30,11 +30,11 @@ $deck = $db->decks_new->findOne(array(
     'user' => $user['_id'],
     'name' => $name,
 ));
-
 if($deck){
-    document_output($decks);
+    document_output($deck);
     document_output($user);
     $deck['user'] = $user;
+    echo(json_encode($deck));
 }else{
     header('HTTP/1.1 404 Not Found');
 }
