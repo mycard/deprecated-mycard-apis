@@ -41,14 +41,16 @@ $deck = $db->decks_new->findOne(array(
 ));
 
 if ($deck) {
-    if ($deck['updated_at'] <= $updated_at) {
+    if ((isset($deck['deleted']) && $deck['deleted']) or $deck['updated_at'] <= $updated_at) {
         if($deck['card_usages'] == $card_usages){
             $db->decks_new->update(array(
                 '_id' => $deck['_id'],
             ), array(
                 '$set' => array(
-                    'updated_at' => $updated_at,
-                    'deleted' => false
+                    'updated_at' => $updated_at
+                ),
+                '$unset' => array(
+                    'deleted' => ''
                 )
             ));
             header('HTTP/1.1 204 No Content');
@@ -56,7 +58,7 @@ if ($deck) {
             $db->deck_versions->insert(array(
                 'deck' => $deck['_id'],
                 'card_usages' => $card_usages,
-                'version' => $deck['version']+1,
+                'version' => $deck['version'] + 1,
                 'created_at' => $updated_at
             ));
 
@@ -67,12 +69,13 @@ if ($deck) {
                     'updated_at' => $updated_at,
                     'card_usages' => $card_usages,
                     'version' => $deck['version'] + 1,
-                    'deleted' => false
+                ),
+                '$unset' => array(
+                    'deleted' => ''
                 )
             ));
-            $deck['user'] = $user;
-            document_output($deck);
-            echo(json_encode($deck));
+            header('HTTP/1.1 201 Created');
+            header("Location: https://my-card.in/decks/$user_name/$name.json");
         }
     } else {
         header('HTTP/1.1 409 Conflict');
@@ -83,7 +86,6 @@ if ($deck) {
         'user' => $user['_id'],
         'created_at' => $updated_at,
         'updated_at' => $updated_at,
-        'deleted' => false,
         'card_usages' => $card_usages,
         'version' => 1
     );
