@@ -1,12 +1,12 @@
 #################
-## MyCard API
+## nodejs
 #################
-/config.php
+node_modules/
 
 #################
 ## Jetbrains
 #################
-/.idea/
+.idea/
 
 #################
 ## Eclipse
