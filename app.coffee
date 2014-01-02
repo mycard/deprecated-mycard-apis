@@ -1,5 +1,3 @@
-settings = require './config.json'
-
 restify = require('restify');
 MongoClient = require('mongodb').MongoClient;
 server = restify.createServer
@@ -16,7 +14,7 @@ server.use restify.conditionalRequest()
 
 
 #因为是个回调...WTF要怎么分文件..先暂时全都合并到一个文件里了
-MongoClient.connect settings['db_server'], settings['db_options'], (err, db)->
+MongoClient.connect "mongodb:///tmp/mongodb-27017.sock,live.my-card.in:27017,master.my-card.in:27017/mycard?readPreference=nearest&replicaSet=mycard", {server:{auto_reconnect:true,poolSize: 5}}, (err, db)->
 
   #decks list
   server.get '/decks/:user', (req, res, next) ->
@@ -105,7 +103,7 @@ MongoClient.connect settings['db_server'], settings['db_options'], (err, db)->
                     version: deck['version'] + 1,
                   $unset:
                     deleted: ''
-                }, (err, docs)->
+                }, (err)->
                   return next(err) if err
                   res.setHeader('Location', "https://my-card.in/decks/#{req.param.user}/#{req.param.name}.json");
                   res.send(201)
@@ -157,8 +155,10 @@ MongoClient.connect settings['db_server'], settings['db_options'], (err, db)->
               updated_at: new Date()
               deleted: true
           }
-          res.send 204
-          next()
+          , (err)->
+            return next(err) if err
+            res.send 204
+            next()
 
 
-server.listen(settings['port']);
+server.listen(9004);
