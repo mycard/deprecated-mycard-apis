@@ -1,5 +1,5 @@
 {
-    "db_server": "mongodb:///tmp/mongodb-27017.sock",
+    "db_server": "mongodb://live.my-card.in:27017/mycard",
     "db_options": {"server":{"auto_reconnect":true,"poolSize": 5}},
     "port":9004
 }
