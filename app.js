@@ -288,6 +288,9 @@
           encoding: 'utf8'
         }, function(err, data) {
           var card_id, count, last, line, result, _i, _len, _ref, _ref1;
+          if (err) {
+            return next(err);
+          }
           result = [];
           last = null;
           _ref = data.split("\n");

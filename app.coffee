@@ -176,6 +176,7 @@ MongoClient.connect settings['db_server'], settings['db_options'], (err, db)->
   limited =
     list: (req, res, next) ->
       fs.readFile 'lflist.conf', encoding: 'utf8', (err, data)->
+        return next(err) if err
         result = []
         last = null
         for line in data.split("\n")
